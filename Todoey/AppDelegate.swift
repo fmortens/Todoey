@@ -17,14 +17,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        do {
-//            
-//            //let realm = try Realm()
-//            
-//        } catch {
-//            print("Error initializing new realm, \(error)")
-//        }
+        let data = Data()
         
+        data.name = "Frank"
+        data.age = 43
+        
+        do {
+            let realm = try Realm()
+            
+            try realm.write {
+                realm.add(data)
+            }
+        } catch {
+            print("Error initializing new realm, \(error)")
+        }
         
         return true
     }
