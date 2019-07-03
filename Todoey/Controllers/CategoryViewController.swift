@@ -37,8 +37,22 @@ class CategoryViewController: UITableViewController {
         return cell
     }
     
+    
+    // MARK: -- TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
+        
+//        tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: "goToItems", sender: self)
+        
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let destinationVC = segue.destination as! TodoListViewController
+        
+        if  let indexPath = tableView.indexPathForSelectedRow {
+            destinationVC.selectedCategory = categories[indexPath.row]
+        }
     }
     
     // MARK: -- Data Manipulation Methods
@@ -48,7 +62,7 @@ class CategoryViewController: UITableViewController {
         do {
             categories = try context.fetch(request)
         } catch {
-            print("Error fetching categories from context \(error)")
+            print("Error loading categories \(error)")
         }
         
         tableView.reloadData()
@@ -59,7 +73,7 @@ class CategoryViewController: UITableViewController {
         do {
             try self.context.save()
         } catch {
-            print("Error saving context \(error)")
+            print("Error saving categories \(error)")
         }
         
         tableView.reloadData()
@@ -70,12 +84,12 @@ class CategoryViewController: UITableViewController {
         var textField = UITextField()
         
         let alert = UIAlertController(
-            title: "Add new category",
+            title: "Add New Category",
             message: "",
             preferredStyle: .alert
         )
         
-        let action = UIAlertAction(title: "Add Category", style: .default) { (action) in
+        let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
             if textField.text!.count > 0 {
                 let newCategory = Category(context: self.context)
@@ -84,11 +98,12 @@ class CategoryViewController: UITableViewController {
                 self.categories.append(newCategory)
                 self.saveCategories()
             }
+            
         }
         
-        alert.addTextField { (alertTextField) in
-            alertTextField.placeholder = "Create new category"
-            textField = alertTextField
+        alert.addTextField { (field) in
+            field.placeholder = "Add a new category"
+            textField = field
         }
         
         alert.addAction(action)
@@ -96,11 +111,6 @@ class CategoryViewController: UITableViewController {
         present(alert, animated: true, completion: nil)
         
     }
-    
-    
-    
-    // MARK: -- TableView Delegate Methods
-    
     
     
 }
