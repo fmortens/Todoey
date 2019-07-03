@@ -11,7 +11,8 @@ import CoreData
 
 class TodoListViewController: UITableViewController {
     
-    var itemArray = [Item]()
+    var items = [Item]()
+    
     let context = (
         UIApplication.shared.delegate as! AppDelegate
     ).persistentContainer.viewContext
@@ -19,20 +20,13 @@ class TodoListViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(
-            FileManager.default.urls(
-                for: .documentDirectory,
-                in: .userDomainMask
-            )
-        )
-        
         loadItems()
     }
 
     // MARK: Core Data methods
     func loadItems(with request: NSFetchRequest<Item> = Item.fetchRequest()) {
         do {
-            itemArray = try context.fetch(request)
+            items = try context.fetch(request)
             
             tableView.reloadData()
         } catch {
@@ -63,7 +57,7 @@ class TodoListViewController: UITableViewController {
                 let newItem = Item(context: self.context)
                 newItem.title = textField.text!
                 
-                self.itemArray.append(newItem)
+                self.items.append(newItem)
                 
                 
                 self.saveItems()
@@ -86,12 +80,12 @@ class TodoListViewController: UITableViewController {
 extension TodoListViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return itemArray.count
+        return items.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ToDoItemCell", for: indexPath)
-        let item = itemArray[indexPath.row]
+        let item = items[indexPath.row]
         
         cell.textLabel?.text = item.title
         cell.accessoryType = item.done ? .checkmark : .none
@@ -100,7 +94,7 @@ extension TodoListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        items[indexPath.row].done = !items[indexPath.row].done
         
         //        context.delete(itemArray[indexPath.row])
         //        itemArray.remove(at: indexPath.row)
