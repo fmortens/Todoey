@@ -8,6 +8,7 @@
 
 import UIKit
 import SwipeCellKit
+import ChameleonFramework
 
 class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegate {
 
@@ -18,7 +19,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     }
     
     
-    // TableView Datasource Methods
+    // MARK: -- TableView Datasource Methods
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! SwipeTableViewCell
         cell.delegate = self
@@ -27,7 +28,8 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
 
     }
     
-    // MARK: --Swipe Cell Delegate Methods
+    
+    // MARK: -- Swipe Cell Delegate Methods
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
@@ -49,7 +51,7 @@ class SwipeTableViewController: UITableViewController, SwipeTableViewCellDelegat
     }
     
     func updateModel(at indexPath: IndexPath) {
-        // Update model
+        // Update model, override this in subclasses
     }
     
 }
