@@ -12,6 +12,7 @@
 		DE47DAB222CDD8E300B80978 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47DAB122CDD8E300B80978 /* Item.swift */; };
 		DE47DAB422CDD8EB00B80978 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE47DAB322CDD8EB00B80978 /* Category.swift */; };
 		DEB380D722CCC71E00F3FB68 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DEB380D622CCC71E00F3FB68 /* Main.storyboard */; };
+		DEBFC30122CE0CC90024A21F /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DEBFC30022CE0CC90024A21F /* SwipeTableViewController.swift */; };
 		DECA2DA022CA411300D95519 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA2D9F22CA411300D95519 /* AppDelegate.swift */; };
 		DECA2DA422CA411300D95519 /* TodoListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DECA2DA322CA411300D95519 /* TodoListViewController.swift */; };
 		DECA2DA922CA411600D95519 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DECA2DA822CA411600D95519 /* Assets.xcassets */; };
@@ -26,6 +27,7 @@
 		DE47DAB122CDD8E300B80978 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		DE47DAB322CDD8EB00B80978 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		DEB380D622CCC71E00F3FB68 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		DEBFC30022CE0CC90024A21F /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		DECA2D9C22CA411300D95519 /* Todoey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todoey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DECA2D9F22CA411300D95519 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DECA2DA322CA411300D95519 /* TodoListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 			children = (
 				DE2A738922CB8F1D00554EEF /* CategoryViewController.swift */,
 				DECA2DA322CA411300D95519 /* TodoListViewController.swift */,
+				DEBFC30022CE0CC90024A21F /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				DE47DAB422CDD8EB00B80978 /* Category.swift in Sources */,
 				DE2A738A22CB8F1D00554EEF /* CategoryViewController.swift in Sources */,
 				DECA2DA422CA411300D95519 /* TodoListViewController.swift in Sources */,
+				DEBFC30122CE0CC90024A21F /* SwipeTableViewController.swift in Sources */,
 				DECA2DA022CA411300D95519 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -385,6 +389,7 @@
 			baseConfigurationReference = 6B9867A87523DF4A91DE01BE /* Pods-Todoey.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NRNCDR832H;
 				INFOPLIST_FILE = Todoey/Info.plist;
@@ -395,6 +400,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = im.mortensen.Todoey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -405,6 +411,7 @@
 			baseConfigurationReference = 4FDBF0108D5A6CE068AC6CE0 /* Pods-Todoey.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = NRNCDR832H;
 				INFOPLIST_FILE = Todoey/Info.plist;
@@ -415,6 +422,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = im.mortensen.Todoey;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
