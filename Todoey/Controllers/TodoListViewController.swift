@@ -23,18 +23,17 @@ class TodoListViewController: UITableViewController {
     
     // MARK: Core Data methods
     func loadItems() {
-        
         items = selectedCategory?.items.sorted(
             byKeyPath: "dateCreated",
             ascending: true
         )
         
+        tableView.reloadData()
     }
     
     
     //MARK: Actions
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-        
         var textField = UITextField()
         
         let alert = UIAlertController(
@@ -71,7 +70,6 @@ class TodoListViewController: UITableViewController {
         alert.addAction(action)
         
         present(alert, animated: true, completion: nil)
-        
     }
 }
 
@@ -97,7 +95,6 @@ extension TodoListViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         if let item = items?[indexPath.row] {
             do {
                 try realm.write {
@@ -109,7 +106,7 @@ extension TodoListViewController {
         }
         
         tableView.reloadData()
-        
+        tableView.deselectRow(at: indexPath, animated: true)
     }
     
 }
@@ -119,7 +116,6 @@ extension TodoListViewController {
 extension TodoListViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
         items = items?.filter(
             "title CONTAINS[cd] %@",
             searchBar.text!
@@ -127,22 +123,17 @@ extension TodoListViewController: UISearchBarDelegate {
             .sorted(byKeyPath: "dateCreated", ascending: true)
         
         tableView.reloadData()
-
     }
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-
         if searchBar.text?.count == 0 {
             loadItems()
             
-            tableView.reloadData()
-
             DispatchQueue.main.async {
                 searchBar.resignFirstResponder()
             }
 
         }
-
     }
 
 }

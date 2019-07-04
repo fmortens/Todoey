@@ -15,12 +15,11 @@ class CategoryViewController: UITableViewController {
     var categories: Results<Category>?
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
 
         loadCategories()
-        
     }
+    
     
     // MARK: -- TableView Datasource Methods
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -28,20 +27,16 @@ class CategoryViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryCell", for: indexPath)
         cell.textLabel?.text = categories?[indexPath.row].name ?? "No categories added yet"
         
         return cell
-        
     }
     
     
     // MARK: -- TableView Delegate Methods
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         performSegue(withIdentifier: "goToItems", sender: self)
-        
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -52,13 +47,12 @@ class CategoryViewController: UITableViewController {
         }
     }
     
+    
     // MARK: -- Data Manipulation Methods
     func loadCategories() {
-        
         categories = realm.objects(Category.self)
         
         tableView.reloadData()
-        
     }
     
     func save(category: Category) {
@@ -72,6 +66,7 @@ class CategoryViewController: UITableViewController {
         
         tableView.reloadData()
     }
+    
     
     // MARK: -- Actions
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
