@@ -2,11 +2,11 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - ChameleonFramework/Swift (2.1.0):
     - ChameleonFramework/Default
-  - Realm (3.16.1):
-    - Realm/Headers (= 3.16.1)
-  - Realm/Headers (3.16.1)
-  - RealmSwift (3.16.1):
-    - Realm (= 3.16.1)
+  - Realm (3.17.0):
+    - Realm/Headers (= 3.17.0)
+  - Realm/Headers (3.17.0)
+  - RealmSwift (3.17.0):
+    - Realm (= 3.17.0)
   - SwipeCellKit (2.6.0)
 
 DEPENDENCIES:
@@ -31,8 +31,8 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
-  Realm: 601cacc51d8be3b17a377ef787be0f6ee0e76cf1
-  RealmSwift: 486f2e09d5a8ccff63ed66e48d0846b111deb5e5
+  Realm: b30db41ff34fc858ffc25ba8d44a82c164e7ccd0
+  RealmSwift: fe733e459d60dc7b6971d4cbee2eb4854097d12c
   SwipeCellKit: 935ca28c187ec6e1ffb2b578cf8ddca842bfdcbb
 
 PODFILE CHECKSUM: 273023399eb64540342248bd9d25b8642357f90f
